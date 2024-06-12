@@ -23,8 +23,7 @@ public class BatchFileUtility {
 
   @Autowired SourceFileService sourceFileService;
 
-  public Mono<BatchSummary> decodeAndWriteFileToMount(
-      String encodedFileContent, String filename, BatchSummary summary) {
+  public Mono<BatchSummary> decodeAndWriteFileToMount(String encodedFileContent, String filename, BatchSummary summary) {
     LOG.info("Decoding the batch file.");
     try {
       byte[] decodeBytes = Base64.getDecoder().decode(encodedFileContent);

@@ -11,5 +11,7 @@ import org.springframework.stereotype.Component;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ConfigurationProperties("batch-processor")
 public class AppProperties {
+  S3 s3;
   Destination mount;
+  Destination cloud;
 }

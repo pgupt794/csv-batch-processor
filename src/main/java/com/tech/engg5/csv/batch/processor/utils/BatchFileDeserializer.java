@@ -48,8 +48,7 @@ public class BatchFileDeserializer {
         List<String> row = Arrays.asList(line.split(","));
         List<AdditionalParam> additionalParams = new ArrayList<>();
 
-        val record =
-          objectBuilder.buildBatchRecord(summary.getSummaryId(), RecordStatus.PENDING.name());
+        val record = objectBuilder.buildBatchRecord(summary.getSummaryId(), RecordStatus.PENDING.name());
 
         if (headers.get(0).equalsIgnoreCase(FileConstant.CUSTOMER_TOKEN)) {
           LOG.info("Batch file contains only customer_token. File-summaryId - [{}]", summary.getSummaryId());
@@ -67,7 +66,9 @@ public class BatchFileDeserializer {
           fluxSink.next(record);
         } else if (headers.get(0).equalsIgnoreCase(FileConstant.BOOK_ID)
             && headers.get(1).equalsIgnoreCase(FileConstant.CUSTOMER_ID)) {
-          LOG.info("Batch file contains bookId and customerId. File-summaryId - [{}]", summary.getSummaryId());
+          LOG.info(
+              "Batch file contains bookId and customerId. File-summaryId - [{}]",
+              summary.getSummaryId());
           record.setCustomerToken(null);
           record.setBookNumber(SensitiveId.builder().encryptedValue(row.get(0)).build());
           record.setCustomerNumber(SensitiveId.builder().encryptedValue(row.get(1)).build());

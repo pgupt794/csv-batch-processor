@@ -65,6 +65,7 @@ dependencies {
   implementation("com.google.code.gson:gson:2.10.1")
   implementation("io.projectreactor:reactor-tools:3.5.8")
   implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+  implementation('com.amazonaws:aws-java-sdk-s3:1.12.470')
   runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5", "io.jsonwebtoken:jjwt-jackson:0.11.5")
   implementation("org.apache.commons:commons-text:1.10.0")
   implementation("org.apache.commons:commons-lang3:3.12.0")
@@ -89,10 +90,6 @@ dependencies {
   testImplementation("org.testcontainers:junit-jupiter:1.18.3")
   testImplementation("io.projectreactor:reactor-test:3.5.8")
   testImplementation("org.apache.httpcomponents.client5:httpclient5-win:5.2.1")
-}
-
-spotless {
-  java { googleJavaFormat() }
 }
 
 test {

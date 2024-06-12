@@ -29,17 +29,13 @@ import org.springframework.test.context.ActiveProfiles;
 @ExtendWith(OutputCaptureExtension.class)
 public class BatchProcessingServiceTest extends IntegrationTestBase {
 
-  @Autowired
-  ObjectMapper objectMapper;
+  @Autowired ObjectMapper objectMapper;
 
-  @Autowired
-  private BatchProcessingService batchProcessingService;
+  @Autowired private BatchProcessingService batchProcessingService;
 
-  @Autowired
-  private ReactiveMongoOperations reactiveMongoOperations;
+  @Autowired private ReactiveMongoOperations reactiveMongoOperations;
 
-  @MockBean
-  private Clock systemClock;
+  @MockBean private Clock systemClock;
 
   @BeforeEach
   public void beforeEach() {

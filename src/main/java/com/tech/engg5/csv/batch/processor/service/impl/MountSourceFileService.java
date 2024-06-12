@@ -21,10 +21,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@ConditionalOnProperty(
-    value = "batch-processor.mount.target",
-    havingValue = "MOUNT",
-    matchIfMissing = false)
+@ConditionalOnProperty(value = "batch-processor.mount.target", havingValue = "MOUNT", matchIfMissing = false)
 public class MountSourceFileService implements SourceFileService {
 
   private final String path;
@@ -57,7 +54,7 @@ public class MountSourceFileService implements SourceFileService {
   @Override
   public InputStream getFileInputStream(String filename) {
     try {
-      File file = findFiles(filename).stream().filter(f -> f.getName().equals(filename)).findFirst().get();
+      File file = this.findFiles(filename).stream().filter(f -> f.getName().equals(filename)).findFirst().get();
 
       return new FileInputStream(file);
     } catch (Exception exc) {
@@ -75,7 +72,6 @@ public class MountSourceFileService implements SourceFileService {
   }
 
   private static Predicate<? super File> fileNameFilter(String filename) {
-    return file ->
-      Optional.of(file).map(File::getName).filter(name -> name.equals(filename)).isPresent();
+    return file -> Optional.of(file).map(File::getName).filter(name -> name.equals(filename)).isPresent();
   }
 }
