@@ -36,10 +36,10 @@ public class IntegrationTestBase {
   }
 
   @SafeVarargs
-  protected final <T> void thenExpectDatabaseEntries(Class<T> type, List<String> fieldsToIgnore, T... expectedEntries) {
-    await()
-      .atMost(EXPECTING_MESSAGES_TIMEOUT)
-      .until(() -> reactiveMongoOperations.findAll(type).collectList().block().size() == expectedEntries.length);
+  protected final <T> void thenExpectDatabaseEntries(
+      Class<T> type, List<String> fieldsToIgnore, T... expectedEntries) {
+    await().atMost(EXPECTING_MESSAGES_TIMEOUT).until(() ->
+      reactiveMongoOperations.findAll(type).collectList().block().size() == expectedEntries.length);
 
     List<T> entriesInCollection = reactiveMongoOperations.findAll(type).collectList().block();
     RecursiveComparisonAssert<?> assertion = assertThat(entriesInCollection)

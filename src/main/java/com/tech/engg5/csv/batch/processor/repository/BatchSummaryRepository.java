@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BatchSummaryRepository
-    extends ReactiveMongoRepository<BatchSummary, String>, BatchSummaryRepositoryCustom {}
+  extends ReactiveMongoRepository<BatchSummary, String>, BatchSummaryRepositoryCustom {}

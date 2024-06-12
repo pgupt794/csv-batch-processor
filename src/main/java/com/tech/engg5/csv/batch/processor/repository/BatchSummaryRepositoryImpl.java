@@ -40,8 +40,8 @@ public class BatchSummaryRepositoryImpl implements BatchSummaryRepositoryCustom 
       .set(BatchSummary.Fields.status, batchSummary.getStatus())
       .set(BatchSummary.Fields.lastUpdatedTs, Instant.now());
 
-    return this.mongoTemplate.findAndModify(createOrUpdateQuery, updateDef, options().upsert(true).returnNew(true),
-      BatchSummary.class)
-      .doOnSuccess(res -> LOG.info("BatchSummary - [{}] saved successfully.", batchSummary.getSummaryId()));
+    return this.mongoTemplate
+      .findAndModify(createOrUpdateQuery, updateDef, options().upsert(true).returnNew(true), BatchSummary.class)
+        .doOnSuccess(res -> LOG.info("BatchSummary - [{}] saved successfully.", batchSummary.getSummaryId()));
   }
 }

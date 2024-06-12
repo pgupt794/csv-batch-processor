@@ -45,3 +45,15 @@ batch-processor:
   mount:
     target: MOUNT
     localPath: 'Enter Value'
+  cloud:
+    target: S3
+    localPath: 'Enter Value'
+  s3:
+    endpoint: 'Enter your endpoint'
+    region: 'Enter region'
+    secretKey: 'Enter Secret Value'
+    accessKey: 'Enter Access Value'
+    disableCertCheck: true
+    bufferSize: 50
+    socketTimeout: 240000
+    connectionTimeout: 60000
